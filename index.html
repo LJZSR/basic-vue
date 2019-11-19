@@ -7,26 +7,30 @@
 	</head>
 	<body>
 		<div id="app">
-			<div v-if="type === 'A'">
-				A
-			</div>
-			<div v-else-if="type === 'B'">
-				B
-			</div>
-			<div v-else-if="type === 'C'">
-				C
-			</div>
-			<div v-else>
-				D
-			</div>
-			<h1 v-show="ok">Hello!</h1>
+			<ul>
+				<li v-for="item, index in items">
+					{{ index }}..{{ item.message }}
+				</li>
+			</ul>
+			<ul>
+				<li v-for="value, key in object">
+					{{key}} : {{value}}
+				</li>
+			</ul>
 		</div>
 		<script type="text/javascript">
 			var vm = new Vue({
 				el: "#app",
 				data: {
-					type: '',
-					ok: true
+					items: [
+						{message: 'Foo'},
+						{message: 'Bar'}
+					],
+					object: {
+						title: 'how to do list in vue',
+						author: 'Jane Doe',
+						publishedAt: '2019-11-18'
+					}
 				},
 			});
 		</script>
