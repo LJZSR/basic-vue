@@ -6,5 +6,18 @@
 		<title></title>
 	</head>
 	<body>
+		<div id="app">
+			{{ message }}
+			{{ name }}
+		</div>
+		<script type="text/javascript">
+			var app = new Vue({
+				el: "#app",
+				data: {
+					message: "Hello Vue!",
+					name: "Vue"
+				}
+			})
+		</script>
 	</body>
 </html>
