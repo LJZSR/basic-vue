@@ -7,36 +7,39 @@
 	</head>
 	<body>
 		<div id="app">
-			{{ msg }}
+			<p>This message will be changed: {{ msg1 }}</p>
+			<p v-once>This message cannot be changed: {{ msg2 }}</p>
+			<p>Using mustaches: {{ rawHtml }} ></p>
+			<p>Using v-html directive: <span v-html="rawHtml"></span></p>
+			<div v-bind:class="color">test..</div>
+			<p>{{ number + 1}}</p>
+			<p> {{ok ? 'Yes' : 'No'}} </p>
+			<p> {{ message.split('').reverse().join('') }} </p>
 		</div>
 		<script type="text/javascript">
 			var vm = new Vue({
 				el: "#app",
 				data: {
-					msg: "hi vue"
+					msg1: 'hi vue',
+					msg2: 'hi vue',
+					rawHtml: '<span style="color: red">this is red</span>',
+					color: 'blue',
+					number: 10,
+					ok: false,
+					message: 'vue'
 				},
-				beforeCreate: function(){
-					console.log("beforeCreated");
-				},
-				created: function(){
-					console.log(this.$data.msg);
-				},
-				beforeMount: function(){
-					console.log(this.$el);
-				},
-				mounted: function(){
-					console.log(this.$data.msg);
-				},
-				beforeUpdate: function(){
-					console.log(this.$data.msg);
-				},
-				updated: function(){
-					console.log('updated');
-				}
-			})
-			setTimeout(function(){
-				vm.$data.msg = 'Changed!'
-			}, 3000)
+			});
+			vm.$data.msg1 = 'changed'
+			vm.$data.msg2 = 'changed'
 		</script>
+		<style>
+			.red {
+				color: red;
+			}
+			.blue {
+				color: blue;
+				font-size: 100px;
+			}
+		</style>
 	</body>
 </html>
