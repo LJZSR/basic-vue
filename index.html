@@ -7,21 +7,53 @@
 	</head>
 	<body>
 		<div id="app">
-			<button v-on:click="counter += 1"> {{counter}}</button>
-			<button v-on:click="greet('abc', $event)">Greet!</button>
+			<div id="example-1">
+				<input v-model="message1" placeholder="input"/>
+				<p>Message is: {{ message1 }}</p>
+			</div>
+			<div id="example-2">
+				<textarea v-model="message2" placeholder="textarea"></textarea>
+				<p>{{ message2 }}</p>
+			</div>
+			<div style="margin-top: 20px;" id="example-3">
+				<input type="checkbox" value="Jack" id="jack" v-model="checkedName"/>
+				<label for="jack">Jack</label>
+				<input type="checkbox" value="John" id="john" v-model="checkedName"/>
+				<label for="john">John</label>
+				<input type="checkbox" value="Mike" id="mike" v-model="checkedName"/>
+				<label for="mike">Mike</label>
+				<br />
+				<span>Checked name: {{ checkedName }}</span>
+			</div>
+			<div style="margin-top: 20px;" id="example-4">
+				<input type="radio" value="One" id="one" v-model="picked"/>
+				<label for="one">One</label>
+				<input type="radio" value="Two" id="two" v-model="picked" />
+				<label for="two">Two</label>
+				<br />
+				<span>Picked: {{ picked }}</span>
+			</div>
+			<button v-on:click="submit">submit</button>
 		</div>
+		
 		<script type="text/javascript">
 			var vm = new Vue({
 				el: "#app",
 				data: {
-					counter: 1,
-					name: 'vue'
+					message1: "",
+					message2: "",
+					checkedName: [],
+					picked: ""
 				},
 				methods: {
-					greet: function(str, e) {
-						alert('Hello ' + str + ' !');
-						alert(this.name);
-						console.log(e.x);
+					submit: function() {
+						var result = {
+							message1: this.message1,
+							message2: this.message2,
+							checkedName: this.checkedName,
+							picked: this.picked
+						}
+						console.log(result)
 					}
 				}
 			});
