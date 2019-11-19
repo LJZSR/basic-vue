@@ -7,17 +7,20 @@
 	</head>
 	<body>
 		<div id="app">
-			{{ message }}
-			{{ name }}
+			{{ a }}
 		</div>
 		<script type="text/javascript">
-			var app = new Vue({
+			data = {a: 1};
+			var vm = new Vue({
 				el: "#app",
-				data: {
-					message: "Hello Vue!",
-					name: "Vue"
-				}
+				data: data
 			})
+			console.log(data.a === vm.a)
+			console.log(vm.$data.a === data.a)
+			vm.$watch('a', function(newVal, oldVal) {
+				console.log(newVal, oldVal)
+			})
+			vm.$data.a = 'test'
 		</script>
 	</body>
 </html>
