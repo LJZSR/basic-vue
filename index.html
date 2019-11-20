@@ -7,12 +7,10 @@
 	</head>
 	<body>
 		<div id="app">
-			<button-counter title="tittle1: " @clicknow="clicknow">
-				<h2>Hi</h2>
-			</button-counter>
+			<button-counter title="tittle1: " @clicknow="clicknow"></button-counter>
 			<button-counter title="tittle2: "></button-counter>
+			<test></test>
 		</div>
-		
 		<script type="text/javascript">
 			Vue.component('button-counter', {
 				props: ['title'],
@@ -40,8 +38,12 @@
 					clicknow: function(e) {
 						console.log(e)
 					}
-				}
-				
+				},
+				components: {
+					test: {
+						template: '<h2>h2....</h2>'
+					}
+				}				
 			});
 		</script>
 	</body>
